@@ -8,28 +8,28 @@ pipeline {
     stages {
         stage('Pre') { 
 // 		hello push
-            steps {
-        //         sh 'ansible-playbook -v -i /home/jenkins/.jenkins/workspace/FlaskApp/inventory.yaml /home/jenkins/.jenkins/workspace/FlaskApp/playbook.yaml'
-            }
+//             steps {
+//         //         sh 'ansible-playbook -v -i /home/jenkins/.jenkins/workspace/FlaskApp/inventory.yaml /home/jenkins/.jenkins/workspace/FlaskApp/playbook.yaml'
+//             }
         }
         stage('Test') { 
-            steps {
-        //         sh 'sudo pytest /home/jenkins/.jenkins/workspace/FlaskApp/'
-            }
+//             steps {
+//         //         sh 'sudo pytest /home/jenkins/.jenkins/workspace/FlaskApp/'
+//             }
         }
         stage('Building') {
-            steps {
-//                 sh 'sudo docker-compose -f /home/jenkins/APIPrimeAge/docker-compose.yaml build'
-            }
+//             steps {
+// //                 sh 'sudo docker-compose -f /home/jenkins/APIPrimeAge/docker-compose.yaml build'
+//             }
         }
         stage('Deploying') {
-            steps {
-//                 sh '''
-//                     ssh -i /home/jenkins/.ssh/myKey -o StrictHostKeyChecking=no ubuntu@172.31.36.186                 
-//                     cd APIPrimeAge
-// 		    docker-compose build
-//                 '''
-            }
+//             steps {
+// //                 sh '''
+// //                     ssh -i /home/jenkins/.ssh/myKey -o StrictHostKeyChecking=no ubuntu@172.31.36.186                 
+// //                     cd APIPrimeAge
+// // 		    docker-compose build
+// //                 '''
+//             }
         }
     }
 }
