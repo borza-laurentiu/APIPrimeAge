@@ -1,35 +1,30 @@
+
 pipeline {
     agent any
     parameters {
         booleanParam(name: 'Refresh',
                     defaultValue: false,
                     description: 'Read Jenkinsfile and exit.')
-		    }
+            }
     stages {
-        stage('Pre') { 
-// 		hello push
-//             steps {
-//         //         sh 'ansible-playbook -v -i /home/jenkins/.jenkins/workspace/FlaskApp/inventory.yaml /home/jenkins/.jenkins/workspace/FlaskApp/playbook.yaml'
-//             }
+        stage('update apt cache') {
+            steps {
+                sh 'sudo apt update'
+            }
         }
-        stage('Test') { 
-//             steps {
-//         //         sh 'sudo pytest /home/jenkins/.jenkins/workspace/FlaskApp/'
-//             }
+        stage('install apache') {
+            steps {
+                sh 'sudo apt install apache2 -y'
+            }
         }
-        stage('Building') {
-//             steps {
-// //                 sh 'sudo docker-compose -f /home/jenkins/APIPrimeAge/docker-compose.yaml build'
-//             }
+        stage('prune') {
+            steps {
+                sh 'sudo docker system prune -a -f'
+            }
         }
-        stage('Deploying') {
-//             steps {
-// //                 sh '''
-// //                     ssh -i /home/jenkins/.ssh/myKey -o StrictHostKeyChecking=no ubuntu@172.31.36.186                 
-// //                     cd APIPrimeAge
-// // 		    docker-compose build
-// //                 '''
-//             }
+        stage('Build') {
+            steps {
+                sh 'sudo docker-compose build'
+            }
         }
     }
-}
