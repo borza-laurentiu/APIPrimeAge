@@ -32,6 +32,12 @@ pipeline {
                 sh '''
                       python3 -m pytest ./converter/tests/test_unit.py
                       python3 -m pytest ./prime/tests/test_unit.py
+                   '''
+            }
+         stage('Deploy'){
+            steps {
+                sh '''
+                     ssh -i home/jenkins/ .ssh/New-Key ubuntu@13.40.6.137
 
                    '''
             }
